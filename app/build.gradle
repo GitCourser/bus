@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    namespace 'org.courser.bus'
     compileSdkVersion 33
     defaultConfig {
         applicationId "org.courser.bus"
