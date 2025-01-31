@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
         webView = findViewById(R.id.webview);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
         webView.loadUrl("https://web.chelaile.net.cn/ch5/index.html?src=webapp_meizu_map");
     }
 
