@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (webView.canGoBack()) {
-            super.onBackPressed();
-        }
+        moveTaskToBack(true); // 将应用退到后台
     }
 }
