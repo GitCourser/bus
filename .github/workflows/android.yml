@@ -35,7 +35,11 @@ jobs:
     #     git push origin main
 
     - name: Decode Keystore
-      run: echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > my-release-key.jks
+      run: |
+        echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > app/my-release-key.jks
+        chmod 644 app/my-release-key.jks
+        ls -l app/my-release-key.jks
+        file app/my-release-key.jks
 
     - name: Build with Gradle
       env:
