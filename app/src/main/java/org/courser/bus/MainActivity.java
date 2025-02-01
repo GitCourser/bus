@@ -2,7 +2,6 @@ package org.courser.bus;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
@@ -15,6 +14,7 @@ import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
     private WebView webView;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1; // 定义权限请求代码
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setDomStorageEnabled(true); // 启用 DOM 存储（localStorage）
         // webSettings.setDatabaseEnabled(true);   // 启用数据库存储（IndexedDB）
         webSettings.setCacheMode(WebSettings.LOAD_DEFAULT); // 启用缓存
-        webSettings.setGeolocationEnabled(true); // 启用地理位置
+        webSettings.setGeolocationEnabled(true); // 启用定位功能
 
         // 设置 WebChromeClient 以处理定位权限请求
         webView.setWebChromeClient(new WebChromeClient() {
@@ -60,13 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 // 权限已授予，重新加载网页以启用定位功能
                 webView.reload();
             }
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (webView.canGoBack()) {
-            super.onBackPressed();
         }
     }
 }
